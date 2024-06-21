@@ -144,7 +144,6 @@ Window_Message.prototype.createSoundData = function(){
     const soundObjs = SynrecTS.SoundObjects;
     for(let chkSnd = 0; chkSnd < soundObjs.length; chkSnd++){
         const sound = soundObjs[chkSnd];
-        console.log(sound);
         if(sound.file.contains(speaker)){
             // if(sound.indices.includes(faceIndex)){
                 const name = sound.effectName;
@@ -194,7 +193,7 @@ Window_Message.prototype.updateMessage = function() {
 }
 
 Window_Message.prototype.playSound = function(textState){
-    const matchChar = /([A-Za-z\u3040-\u30FF\u4E00-\u9FAF])/g;
+    const matchChar = /[A-Za-z\u00C0-\u00C3\u00C8-\u00CA\u00CC-\u00CD\u00D2-\u00D5\u00D9-\u00DA\u00DD\u00E0-\u00E3\u00E8-\u00EA\u00EC-\u00ED\u00F2-\u00F5\u00F9-\u00FA\u00FD\u0102\u0103\u0110\u0111\u0128\u0129\u0168\u0169\u01A0\u01A1\u01AF\u01B0\u1EA0-\u1EF9]/g;
     const text = textState.text;
     const index = textState.index;
     const chara = text[index];
