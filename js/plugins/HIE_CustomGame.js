@@ -140,44 +140,4 @@
     Scene_Options.prototype.maxCommands = function () {
         return 5;
     };
-
-
-    Window_Message.prototype.playSound = function (textState) {
-        if (textState.ogText != null) {
-            console.log("Hello");
-            console.log(textState.ogText);
-            if (textState.ogText.includes("\\silence")) return;
-        }
-        const matchChar = /[A-Za-z\u00C0-\u00C3\u00C8-\u00CA\u00CC-\u00CD\u00D2-\u00D5\u00D9-\u00DA\u00DD\u00E0-\u00E3\u00E8-\u00EA\u00EC-\u00ED\u00F2-\u00F5\u00F9-\u00FA\u00FD\u0102\u0103\u0110\u0111\u0128\u0129\u0168\u0169\u01A0\u01A1\u01AF\u01B0\u1EA0-\u1EF9]/g;
-        const text = textState.text;
-        const index = textState.index;
-        const chara = text[index];
-        if (chara.match(matchChar)) {
-            if (this._soundText) {
-                let sound = JsonEx.makeDeepCopy(this._soundText);
-                if (!isNaN(this._pchVar)) {
-                    const minPch = sound.pitch - this._pchVar;
-                    const maxPch = sound.pitch + this._pchVar;
-                    const diff = maxPch - minPch;
-                    sound.pitch = minPch + Math.random() * diff;
-                }
-                if (SynrecTS.UseFontVol) {
-                    const fontSize = this.contents.fontSize;
-                    const baseSize = $gameSystem.mainFontSize();
-                    const diff = Math.abs(baseSize - fontSize);
-                    if (fontSize > baseSize) {
-                        sound.volume += Math.floor((diff / baseSize) * sound.volume);
-                    } else if (fontSize < baseSize) {
-                        sound.volume -= Math.floor((diff / baseSize) * sound.volume);
-                    }
-                }
-                AudioManager.stopSe();
-                AudioManager.playSe(sound);
-            }
-        }
-    }
-
-
-
-
 })();

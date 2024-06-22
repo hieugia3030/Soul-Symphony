@@ -106,15 +106,15 @@ SynrecTS.DefaultPan = eval(SynrecTS.Plugins['Default Pan']);
 SynrecTS.DefaultPan = eval(SynrecTS.Plugins['Default Pan']);
 
 SynrecTS.SoundObjects = [];
-try{
+try {
     SynrecTS.SoundJSON = JSON.parse(SynrecTS.Plugins['Custom Text Sounds']);
-    for(let sound = 0; sound < SynrecTS.SoundJSON.length; sound++){
+    for (let sound = 0; sound < SynrecTS.SoundJSON.length; sound++) {
         SynrecTS.SoundJSON[sound] = JSON.parse(SynrecTS.SoundJSON[sound]);
         var soundFX = {};
         soundFX.index = sound;
         soundFX.file = SynrecTS.SoundJSON[sound]['Face File'] ? SynrecTS.SoundJSON[sound]['Face File'] : "";
         soundFX.indices = SynrecTS.SoundJSON[sound]['Face Indices'] ? JSON.parse(SynrecTS.SoundJSON[sound]['Face Indices']) : [];
-        for(idces = 0; idces < soundFX.indices.length; idces++){
+        for (idces = 0; idces < soundFX.indices.length; idces++) {
             soundFX.indices[idces] = eval(soundFX.indices[idces]);
         }
         soundFX.effectName = SynrecTS.SoundJSON[sound]['Sound Effect'] ? SynrecTS.SoundJSON[sound]['Sound Effect'] : SynrecTS.DefaultSound;
@@ -124,58 +124,67 @@ try{
         soundFX.effectPan = !isNaN(SynrecTS.SoundJSON[sound]['Pan']) ? eval(SynrecTS.SoundJSON[sound]['Pan']) : SynrecTS.DefaultPan;
         SynrecTS.SoundObjects.push(soundFX);
     }
-}catch(e){
+} catch (e) {
     console.error(`Failed to parse custom text sounds. ${e}`);
 }
 
+//* Play sound each 4 character. The first char always got called
+let count = 0;
 Window_Message.SOUNDS = SynrecTS.SoundObjects;
 
 SynrecTSWinMsgStrtMsg = Window_Message.prototype.startMessage;
-Window_Message.prototype.startMessage = function() {
+Window_Message.prototype.startMessage = function () {
     SynrecTSWinMsgStrtMsg.call(this);
+    count = 0;
     this.createSoundData();
 }
 
-Window_Message.prototype.createSoundData = function(){
+Window_Message.prototype.createSoundData = function () {
     this._soundText = undefined;
     //const faceName = $gameMessage._faceName;
     //const faceIndex = $gameMessage._faceIndex;
     const speaker = $gameMessage._speakerName;
     const soundObjs = SynrecTS.SoundObjects;
-    for(let chkSnd = 0; chkSnd < soundObjs.length; chkSnd++){
-        const sound = soundObjs[chkSnd];
-        if(sound.file.contains(speaker)){
-            // if(sound.indices.includes(faceIndex)){
+    if (speaker) {
+        for (let chkSnd = 0; chkSnd < soundObjs.length; chkSnd++) {
+            const sound = soundObjs[chkSnd];
+            if (sound.file.contains(speaker)) {
+                // if(sound.indices.includes(faceIndex)){
                 const name = sound.effectName;
-                if(name){
+                if (name) {
                     const vol = sound.effectVol;
                     const pch = sound.effectPch;
                     const pan = sound.effectPan;
                     this._pchVar = sound.effectPchVar;
-                    this._soundText = {name:name, pitch:pch, pan:pan, volume:vol};
+                    this._soundText = { name: name, pitch: pch, pan: pan, volume: vol };
                     return true;
                 }
-            // }
+                // }
+            }
         }
     }
-    const nameDef = SynrecTS.DefaultSound;
-    if(!nameDef)return false;
-    const pchDef = SynrecTS.DefaultPch;
-    const volDef = SynrecTS.DefaultVol;
-    const panDef = SynrecTS.DefaultPan;
-    this._pchVar = SynrecTS.DefaultPchVar;
-    this._soundText = {name:nameDef, pitch:pchDef, pan:panDef, volume:volDef};
-    return true;
+    else {
+        const nameDef = SynrecTS.DefaultSound;
+        if (!nameDef) return false;
+        const pchDef = SynrecTS.DefaultPch;
+        const volDef = SynrecTS.DefaultVol;
+        const panDef = SynrecTS.DefaultPan;
+        this._pchVar = SynrecTS.DefaultPchVar;
+        this._soundText = { name: nameDef, pitch: pchDef, pan: panDef, volume: volDef };
+        return true;
+    }
 }
 
-Window_Message.prototype.updateMessage = function() {
+Window_Message.prototype.updateMessage = function () {
     const textState = this._textState;
     if (textState) {
         while (!this.isEndOfText(textState)) {
             if (this.needsNewPage(textState)) {
                 this.newPage(textState);
             }
-            this.playSound(textState);
+            if (!textState.text.includes("\\silence")) {
+                this.playSound(textState);
+            }
             this.updateShowFast();
             this.processCharacter(textState);
             if (this.shouldBreakHere(textState)) {
@@ -192,27 +201,28 @@ Window_Message.prototype.updateMessage = function() {
     }
 }
 
-Window_Message.prototype.playSound = function(textState){
-    const matchChar = /[A-Za-z\u00C0-\u00C3\u00C8-\u00CA\u00CC-\u00CD\u00D2-\u00D5\u00D9-\u00DA\u00DD\u00E0-\u00E3\u00E8-\u00EA\u00EC-\u00ED\u00F2-\u00F5\u00F9-\u00FA\u00FD\u0102\u0103\u0110\u0111\u0128\u0129\u0168\u0169\u01A0\u01A1\u01AF\u01B0\u1EA0-\u1EF9]/g;
+Window_Message.prototype.playSound = function (textState) {
+    const matchChar = /[A-Za-z\u00C0-\u00C3\u00C8-\u00CA\u00CC-\u00CD\u00D2-\u00D5\u00D9-\u00DA\u00DD\u00E0-\u00E3\u00E8-\u00EA\u00EC-\u00ED\u00F2-\u00F5\u00F9-\u00FA\u00FD\u0102\u0103\u0110\u0111\u0128\u0129\u0168\u0169\u01A0\u01A1\u01AF\u01B0\u1EA0-\u1EF9 .]/g;
     const text = textState.text;
     const index = textState.index;
     const chara = text[index];
-    if(chara.match(matchChar)){
-        if(this._soundText){
+
+    if (chara.match(matchChar) && count % 4 == 0) {
+        if (this._soundText) {
             let sound = JsonEx.makeDeepCopy(this._soundText);
-            if(!isNaN(this._pchVar)){
+            if (!isNaN(this._pchVar)) {
                 const minPch = sound.pitch - this._pchVar;
                 const maxPch = sound.pitch + this._pchVar;
                 const diff = maxPch - minPch;
                 sound.pitch = minPch + Math.random() * diff;
             }
-            if(SynrecTS.UseFontVol){
+            if (SynrecTS.UseFontVol) {
                 const fontSize = this.contents.fontSize;
                 const baseSize = $gameSystem.mainFontSize();
                 const diff = Math.abs(baseSize - fontSize);
-                if(fontSize > baseSize){
+                if (fontSize > baseSize) {
                     sound.volume += Math.floor((diff / baseSize) * sound.volume);
-                }else if(fontSize < baseSize){
+                } else if (fontSize < baseSize) {
                     sound.volume -= Math.floor((diff / baseSize) * sound.volume);
                 }
             }
@@ -220,4 +230,5 @@ Window_Message.prototype.playSound = function(textState){
             AudioManager.playSe(sound);
         }
     }
+    count++;
 }
