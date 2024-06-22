@@ -240,6 +240,7 @@ Window_Base.prototype.textSizeEx = function(text) {
 Window_Base.prototype.createTextState = function(text, x, y, width) {
     const rtl = Utils.containsArabic(text);
     const textState = {};
+    textState.ogText = text;
     textState.text = this.convertEscapeCharacters(text);
     textState.index = 0;
     textState.x = rtl ? x + width : x;

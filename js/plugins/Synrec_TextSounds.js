@@ -182,7 +182,7 @@ Window_Message.prototype.updateMessage = function () {
             if (this.needsNewPage(textState)) {
                 this.newPage(textState);
             }
-            if (!textState.text.includes("\\silence")) {
+            if (!textState.ogText.includes("\\silence")) {
                 this.playSound(textState);
             }
             this.updateShowFast();
