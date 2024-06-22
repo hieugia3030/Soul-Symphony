@@ -1,14 +1,5 @@
 [
-    null,
-    null,
-    {
-        "id": 2,
-        "expanded": false,
-        "name": "Home",
-        "order": 1,
-        "parentId": 0,
-        "scrollX": 729.7777777777778,
-        "scrollY": 636.8888888888889,
-        "quick": false
-    }
+null,
+{"id":1,"expanded":false,"name":"Level1","order":2,"parentId":0,"scrollX":0,"scrollY":0,"quick":false},
+{"id":2,"expanded":false,"name":"Home","order":1,"parentId":0,"scrollX":729.7777777777778,"scrollY":629.7777777777778,"quick":false}
 ]
