@@ -10,5 +10,6 @@ null,
 {"id":8,"expanded":true,"name":"Football Field","order":8,"parentId":0,"scrollX":1216.5,"scrollY":686.25,"quick":false},
 {"id":9,"expanded":false,"name":"san bong","order":9,"parentId":8,"scrollX":1228.5,"scrollY":746.25,"quick":false},
 {"id":10,"expanded":false,"name":"Classroom","order":10,"parentId":0,"scrollX":1216.5,"scrollY":686.25,"quick":false},
-{"id":11,"expanded":false,"name":"Maze","order":11,"parentId":0,"scrollX":1216.5,"scrollY":993.75,"quick":false}
+{"id":11,"expanded":false,"name":"Maze","order":11,"parentId":0,"scrollX":1216.5,"scrollY":993.75,"quick":false},
+{"id":12,"expanded":false,"name":"Main's Room","order":12,"parentId":0,"scrollX":0,"scrollY":0,"quick":false}
 ]
