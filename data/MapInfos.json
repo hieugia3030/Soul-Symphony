@@ -7,7 +7,8 @@ null,
 {"id":5,"expanded":false,"name":"Room 2","order":5,"parentId":1,"scrollX":1216.5,"scrollY":686.25,"quick":false},
 {"id":6,"expanded":false,"name":"Room 3","order":6,"parentId":1,"scrollX":0,"scrollY":0,"quick":false},
 {"id":7,"expanded":false,"name":"Room 4","order":7,"parentId":1,"scrollX":0,"scrollY":0,"quick":false},
-{"id":8,"expanded":false,"name":"Football Field","order":8,"parentId":0,"scrollX":1302,"scrollY":743,"quick":false},
+{"id":8,"expanded":true,"name":"Football Field","order":8,"parentId":0,"scrollX":1302,"scrollY":743,"quick":false},
 {"id":9,"expanded":false,"name":"san bong","order":9,"parentId":8,"scrollX":1216.5,"scrollY":746.25,"quick":false},
-{"id":10,"expanded":false,"name":"Classroom","order":10,"parentId":0,"scrollX":742.8,"scrollY":465,"quick":false}
+{"id":10,"expanded":false,"name":"Classroom","order":10,"parentId":0,"scrollX":506.25,"scrollY":667.5,"quick":false},
+{"id":11,"expanded":false,"name":"Maze","order":11,"parentId":0,"scrollX":1228.5,"scrollY":993.75,"quick":false}
 ]
