@@ -8,9 +8,9 @@ null,
 {"id":6,"expanded":false,"name":"Room 3","order":6,"parentId":1,"scrollX":0,"scrollY":0,"quick":false},
 {"id":7,"expanded":false,"name":"Room 4","order":7,"parentId":1,"scrollX":540.6666666666666,"scrollY":299.6666666666667,"quick":false},
 {"id":8,"expanded":true,"name":"Football Field","order":8,"parentId":0,"scrollX":884.7272727272727,"scrollY":499.0909090909091,"quick":false},
-{"id":9,"expanded":false,"name":"san bong","order":9,"parentId":8,"scrollX":884.7272727272727,"scrollY":753.2727272727273,"quick":false},
-{"id":10,"expanded":false,"name":"Classroom","order":10,"parentId":0,"scrollX":884.7272727272727,"scrollY":490.3636363636364,"quick":false},
-{"id":11,"expanded":false,"name":"Maze","order":11,"parentId":0,"scrollX":982.909090909091,"scrollY":887.4545454545455,"quick":false},
-{"id":12,"expanded":true,"name":"Main's Room","order":12,"parentId":0,"scrollX":434,"scrollY":242.33333333333334,"quick":false},
+{"id":9,"expanded":false,"name":"san bong","order":9,"parentId":8,"scrollX":988.5,"scrollY":753.75,"quick":false},
+{"id":10,"expanded":false,"name":"Classroom","order":10,"parentId":0,"scrollX":976.5,"scrollY":557.25,"quick":false},
+{"id":11,"expanded":false,"name":"Maze","order":11,"parentId":0,"scrollX":988.5,"scrollY":887.25,"quick":false},
+{"id":12,"expanded":true,"name":"Main's Room","order":12,"parentId":0,"scrollX":976.5,"scrollY":545.25,"quick":false},
 {"id":13,"expanded":false,"name":"Dark Main's Room","order":13,"parentId":0,"scrollX":973.1999999999999,"scrollY":539.4,"quick":false}
 ]
