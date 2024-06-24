@@ -10,7 +10,7 @@ null,
 {"id":8,"expanded":true,"name":"Football Field","order":8,"parentId":0,"scrollX":899.3333333333334,"scrollY":686.3333333333334,"quick":false},
 {"id":9,"expanded":false,"name":"san bong","order":9,"parentId":8,"scrollX":1228.6666666666667,"scrollY":746.3333333333334,"quick":false},
 {"id":10,"expanded":false,"name":"Classroom","order":10,"parentId":0,"scrollX":899.3333333333334,"scrollY":660.3333333333334,"quick":false},
-{"id":11,"expanded":false,"name":"Maze","order":11,"parentId":0,"scrollX":879.3333333333334,"scrollY":887,"quick":false},
+{"id":11,"expanded":false,"name":"Maze","order":11,"parentId":0,"scrollX":874,"scrollY":895,"quick":false},
 {"id":12,"expanded":true,"name":"Main's Room","order":12,"parentId":0,"scrollX":540.6666666666666,"scrollY":299.6666666666667,"quick":false},
 {"id":13,"expanded":false,"name":"Dark Main's Room","order":13,"parentId":0,"scrollX":540.6666666666666,"scrollY":299.6666666666667,"quick":false}
 ]
