@@ -140,4 +140,4 @@
     Scene_Options.prototype.maxCommands = function () {
         return 5;
     };
-})();
+    })();
