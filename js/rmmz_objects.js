@@ -9798,6 +9798,7 @@ Game_Interpreter.prototype.command101 = function(params) {
         // Text data
         this._index++;
         $gameMessage.add(this.currentCommand().parameters[0]);
+        this.currentCommand().parameters[0];
     }
     switch (this.nextEventCode()) {
         case 102: // Show Choices

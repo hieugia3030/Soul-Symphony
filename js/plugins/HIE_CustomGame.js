@@ -56,29 +56,6 @@
         return textState;
     };
 
-    Window_Base.prototype.convertEscapeCharacters = function (text) {
-        /* eslint no-control-regex: 0 */
-        text = text.replace(/\\/g, "\x1b");
-        text = text.replace(/\x1b\x1b/g, "\\");
-        while (text.match(/\x1bV\[(\d+)\]/gi)) {
-            text = text.replace(/\x1bV\[(\d+)\]/gi, (_, p1) =>
-                $gameVariables.value(parseInt(p1))
-            );
-        }
-        text = text.replace(/\x1bN\[(\d+)\]/gi, (_, p1) =>
-            this.actorName(parseInt(p1))
-        );
-        text = text.replace(/\x1bP\[(\d+)\]/gi, (_, p1) =>
-            this.partyMemberName(parseInt(p1))
-        );
-        text = text.replace(/\x1bG/gi, TextManager.currencyUnit);
-
-        // remove \silience tag
-        text = text.replace(/\x1bsilience/gi, "");
-
-        return text;
-    };
-
     Scene_MenuBase.prototype.commandWindowHeight = function () {
         return this.calcWindowHeight(3, true);
     };
