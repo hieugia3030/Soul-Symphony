@@ -2,6 +2,6 @@
 null,
 {"id":1,"list":[{"code":249,"indent":0,"parameters":[{"name":"Blow2","volume":60,"pitch":70,"pan":0}]},{"code":205,"indent":0,"parameters":[-1,{"list":[{"code":14,"parameters":[0,0],"indent":null},{"code":0}],"repeat":false,"skippable":false,"wait":false}]},{"code":505,"indent":0,"parameters":[{"code":14,"parameters":[0,0],"indent":null}]},{"code":225,"indent":0,"parameters":[3,5,20,true]},{"code":0,"indent":0,"parameters":[]}],"name":"Shock","switchId":1,"trigger":0},
 {"id":2,"list":[{"code":242,"indent":0,"parameters":[1]},{"code":0,"indent":0,"parameters":[]}],"name":"Stop BGM","switchId":1,"trigger":0},
-{"id":3,"list":[{"code":0,"indent":0,"parameters":[]}],"name":"","switchId":1,"trigger":0},
+{"id":3,"list":[{"code":249,"indent":0,"parameters":[{"name":"Blow2","volume":60,"pitch":70,"pan":0}]},{"code":225,"indent":0,"parameters":[5,5,20,true]},{"code":0,"indent":0,"parameters":[]}],"name":"ScreenShake","switchId":1,"trigger":0},
 {"id":4,"list":[{"code":0,"indent":0,"parameters":[]}],"name":"","switchId":1,"trigger":0}
 ]
