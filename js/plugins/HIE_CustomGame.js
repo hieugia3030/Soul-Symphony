@@ -110,6 +110,10 @@
         Scene_MenuBase.prototype.start.call(this);
     };
 
+    Window_ItemCategory.prototype.maxCols = function() {
+        return 1;
+    };
+
     Game_Player.prototype.updateDashing = function () { };
 
     Window_Options.prototype.addGeneralOptions = function () { };
